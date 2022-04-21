@@ -97,13 +97,15 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char* rofi_runcmd[] = { "rofi", "-font", rofifont, "-show", "run"};
 static const char* rofi_druncmd[] = { "rofi", "-font", rofifont, "-show", "drun"};
 static const char *termcmd[]  = { "st", NULL };
+static const char *webcmd[] = { "firefox", NULL };
 
 #include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = rofi_runcmd } },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = rofi_druncmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = rofi_druncmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_w,      spawn,          {.v = webcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_b,      hideborder,     {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
