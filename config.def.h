@@ -97,6 +97,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char* rofi_runcmd[] = { "rofi", "-font", rofifont, "-show", "run"};
 static const char* rofi_druncmd[] = { "rofi", "-font", rofifont, "-show", "drun"};
 static const char *termcmd[]  = { "st", NULL };
+static const char *webcmd[] = { "firefox", NULL };
 
 #include "movestack.c"
 static Key keys[] = {
