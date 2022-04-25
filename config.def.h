@@ -4,7 +4,7 @@
 #define TERMCLASS "st-256color"
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const unsigned int gappih    = 15;       /* horiz inner gap between windows */
@@ -97,7 +97,6 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char* rofi_runcmd[] = { "rofi", "-font", rofifont, "-show", "run"};
 static const char* rofi_druncmd[] = { "rofi", "-font", rofifont, "-show", "drun"};
 static const char *termcmd[]  = { "st", NULL };
-static const char *webcmd[] = { "firefox", NULL };
 
 #include "movestack.c"
 static Key keys[] = {
@@ -105,7 +104,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = rofi_runcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = rofi_druncmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_w,      spawn,          {.v = webcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_b,      hideborder,     {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
