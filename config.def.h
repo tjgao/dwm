@@ -1,7 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
+#define TERMINAL "st"
+#define TERMCLASS "st-256color"
+
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
@@ -17,7 +20,7 @@ static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_cyan[]        = "#0d212b";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -29,8 +32,8 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
+const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd2[] = {TERMINAL, "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
 const char *spcmd3[] = {"keepassxc", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
@@ -50,7 +53,8 @@ static const Rule rules[] = {
 	 */
 	/* class      instance      title           tags mask       isfloating  isterminal  noswallow    monitor */
 	{ "Gimp",     NULL,         NULL,           0,              1,          0,          0,           -1 },
-	{ "Firefox",  NULL,         NULL,           1 << 8,         0,          0,          0,           -1 },
+//	{ "Firefox",  NULL,         NULL,           1 << 8,         0,          0,          0,           -1 },
+	{ TERMCLASS,  NULL,         NULL,           0,              0,          1,          0,           -1 },
 	{ NULL,       "spterm",     NULL,           SPTAG(0),       1,          0,          0,           -1 },
 	{ NULL,       "spfm",       NULL,           SPTAG(1),       1,          0,          0,           -1 },
 	{ NULL,       "keepassxc",  NULL,           SPTAG(2),       0,          0,          0,           -1 },
@@ -85,14 +89,12 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *webcmd[] = { "firefox", NULL };
 
 #include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_w,      spawn,          {.v = webcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
