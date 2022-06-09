@@ -102,7 +102,7 @@ static const char *termcmd[]  = { "st", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = rofi_runcmd } },
-	{ MODKEY,                       XK_p,      spawn,          {.v = rofi_druncmd } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = rofi_druncmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_b,      hideborder,     {0} },
