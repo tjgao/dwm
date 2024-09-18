@@ -39,12 +39,13 @@ typedef struct {
 } Sp;
 const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "190x52", NULL };
 const char *spcmd2[] = {TERMINAL, "-n", "spfm", "-g", "190x52", "-e", "ranger", NULL };
-const char *spcmd3[] = {"keepassxc", NULL };
+// const char *spcmd3[] = {"keepassxc", NULL };
+const char *spcmd3[] = {TERMINAL, "-n", "spterm", "-g", "190x52", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
 	{"spranger",    spcmd2},
-	{"keepassxc",   spcmd3},
+	{"spterm",      spcmd3},
 };
 
 
